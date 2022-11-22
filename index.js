@@ -266,10 +266,8 @@ Use removeArtist to do the following:
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
 function removeArtist(array, i) {
-  const copiedArray = []
-  for (let i = 0; i < array.length; i++){
+  const copiedArray = [...array]
     copiedArray.splice(i, 1)
-  }
   return copiedArray
 }
 
@@ -292,10 +290,15 @@ Use addArtist to do the following:
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
 function addArtist(array, name, years, genre, nationality, bio) {
-  const arrayCopy = [...array];
   const newArtist = {
-    name: ""
+    'name': name,
+    'years': years,
+    'genre': genre,
+    'nationality': nationality,
+    'bio': bio,
   }
+  array.push(newArtist)
+  return array
 }
 
 
@@ -309,11 +312,12 @@ Use lotsOfArt to do the following:
 */
 
 function lotsOfArt(array) {
+  const newerArray = []
   for(let i = 0; i < array.length; i++){
     if (array[i].paintings > 100){
-      return 
+      newerArray.push(array[i].name)
     }
-  }
+  } return newerArray
 }
 
 
@@ -330,6 +334,9 @@ Use artistInfo to do the following:
 
 function artistInfo(array, name){
   for(let i = 0; i < array.length; i++){
+    if(name === array[i].name){
+      return array[i].bio
+    }
 
   }
 }
@@ -347,7 +354,12 @@ Use artistByCountry to do the following:
 */
 
 function artistByCountry(array, nationality){
-  /*Your Code Here*/
+  const newestArray = []
+  for(let i = 0; i < array.length; i++){
+    if(nationality === array[i].nationality){
+      newestArray.push(array[i].name)
+    }
+  } return newestArray
 }
 
 
